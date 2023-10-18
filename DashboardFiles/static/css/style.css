@@ -1,30 +1,50 @@
+/* Custom CSS for styling your page */
+/* Adjust styles based on your design preferences */
+
 body {
-  padding: 0;
-  margin: 0;
+  background-color: #f8f9fa;
 }
 
-#map,
-body,
-html {
-  height: 100%;
+.jumbotron {
+  text-align: center;
+  color: white;
+  padding: 30px;
+  margin-bottom: 30px;
 }
 
-.legend {
-  border: 2px solid #555;
-  border-radius: 5px; 
-  padding: 10px;  
-
-  line-height: 18px;
-  color: #555;
-  background-color: #fff; 
-} 
-
-.legend i {
-  border : 1px solid #555;
+select {
   width: 100%;
-  height: 18px;
-  float: left;
-  margin-right: 8px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
 
-} 
+#map {
+  margin-top: 20px;
+}
+
+.card {
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+#lineChart {
+  margin-top: 20px;
+}
 

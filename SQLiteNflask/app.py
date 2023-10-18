@@ -73,7 +73,7 @@ def borough_summary(borough):
         borough_data = [dict(zip(columns, row)) for row in cursor.fetchall()]
         conn.close()
 
-        # Calculate crime summaries (adjust as needed)
+        # Calculate crime summaries 
         total_crimes = len(borough_data)
         
         # Group the data by 'Law Cat' and count occurrences
@@ -91,8 +91,8 @@ def borough_summary(borough):
             'Total Crimes': total_crimes,
             'Law Cat Summary': law_cat_summary   
         }
-
-        return jsonify(summary)  # Return the summary as JSON
+ # Return the summary as JSON
+        return jsonify(summary) 
 
     except sqlite3.Error as e:
         return jsonify({'error': 'Database error: ' + str(e)})
