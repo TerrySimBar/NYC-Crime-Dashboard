@@ -10,11 +10,21 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 var markers = L.layerGroup(); // Create a layer group for markers
 
 // Function to create markers with custom data
+
+
+
 function addMarker(lat, lon, selectedBorough) {
-    // Create a marker with a custom popup
-    var marker = L.marker([lat, lon]);
+    // Create a custom marker with a text box
+    var customIcon = L.divIcon({
+        className: 'custom-marker',
+        html: `<div class="marker-text">Click Here</div>`,
+        iconSize: [100, 30], 
+    });
+
+    var marker = L.marker([lat, lon], { icon: customIcon });
 
     marker.on('click', function () {
+    
         showCrimeSummary(selectedBorough, marker);
     });
 
@@ -84,4 +94,53 @@ var boroughCoordinates = {
   'STATEN ISLAND': { lat: 40.5795, lon: -74.1502 },
   'MANHATTAN': { lat: 40.7831, lon: -73.9712 }
 };
+
+// let data;
+
+// const getData = async () => {
+//     data = await (await fetch('http://127.0.0.1:5000/api/v1.0/NYC_all_crime')).json();
+
+
+//     console.log(data);
+// };
+
+// // Function to update and show the bar graph
+// function updateBarGraph(selectedCategory) {
+//     // Filter the data for the selected crime category
+//     const filteredData = data.filter(item => item['Offense'] === selectedCategory);
+
+//     // Group the data by borough and calculate the count for each borough
+//     const groupedData = d3.group(filteredData, d => d.Borough);
+//     const boroughs = Array.from(groupedData.keys());
+//     const counts = Array.from(groupedData.values()).map(group => group.length);
+
+//     // Create a bar graph using Plotly
+//     const trace = {
+//         x: boroughs,
+//         y: counts,
+//         type: 'bar'
+//     };
+
+
+
+//     const layout = {
+//         title: `Crime Count by Borough for ${selectedCategory}`,
+//         xaxis: { title: 'Borough' },
+//         yaxis: { title: 'Count' }
+//     };
+
+//     Plotly.newPlot('barGraph', [trace], layout);
+
+//     // Show the bar graph by setting the display property to 'block'
+//     document.getElementById('barGraph').style.display = 'block';
+// }
+
+// // Handle click events on the crime category buttons
+// document.querySelectorAll('.btn-group a').forEach(button => {
+//     button.addEventListener('click', event => {
+//         event.preventDefault();
+//         const selectedCategory = event.target.innerText; // Get the category from the button text
+//         updateBarGraph(selectedCategory);
+//     });
+// });
 

@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 import sqlite3
 from flask_cors import CORS
 
@@ -13,15 +13,16 @@ app = Flask(__name__)
 # Start at the home page, list all routes that are available.   
 @app.route("/")
 def home():
-    return (
-        f"Welcome to the NYC Crime 2022 API!<br/>"
-        f"/api/v1.0/NYC_all_crime<br/>"
-        f"/api/v1.0/NYC_borough_summary/BRONX<br/>"
-        f"/api/v1.0/NYC_borough_summary/BROOKLYN<br/>"
-        f"/api/v1.0/NYC_borough_summary/QUEENS<br/>"
-        f"/api/v1.0/NYC_borough_summary/STATEN ISLAND<br/>"
-        f"/api/v1.0/NYC_borough_summary/MANHATTAN<br/>"
-    )
+    return render_template("index.html")
+    # return (
+    #     f"Welcome to the NYC Crime 2022 API!<br/>"
+    #     f"/api/v1.0/NYC_all_crime<br/>"
+    #     f"/api/v1.0/NYC_borough_summary/BRONX<br/>"
+    #     f"/api/v1.0/NYC_borough_summary/BROOKLYN<br/>"
+    #     f"/api/v1.0/NYC_borough_summary/QUEENS<br/>"
+    #     f"/api/v1.0/NYC_borough_summary/STATEN ISLAND<br/>"
+    #     f"/api/v1.0/NYC_borough_summary/MANHATTAN<br/>"
+    # )
 
 # Define a route to retrieve and return the data as JSON
 @app.route('/api/v1.0/NYC_all_crime', methods=['GET'])

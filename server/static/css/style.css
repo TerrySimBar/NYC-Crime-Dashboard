@@ -1,0 +1,36 @@
+.navbar-brand {
+  color: white !important; /* Change the text color to white */
+  font-size: 30px !important;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+/* Add space between the logo and dropdown in the navbar */
+.navbar-brand {
+  margin-right: 200px; /* Adjust the margin as needed */
+}
+
+.borough-dropdown {
+  margin-right: 90px; /* Adjust the margin as needed */
+}
+
+.button-group {
+  margin-left: 85px; /* Adjust the margin as needed */
+}
+/* Define styles for the custom marker and text box */
+.custom-marker {
+  text-align: center;
+  background-color: #7f1313; /* Background color for the text box */
+  color: white; /* Text color */
+  border: 1px solid #0d0e0f;
+}
+
+.marker-text {
+  padding: 5px;
+  font-weight: bold;
+}
+
