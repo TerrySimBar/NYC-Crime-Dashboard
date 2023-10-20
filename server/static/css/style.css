@@ -11,11 +11,11 @@
 
 /* Add space between the logo and dropdown in the navbar */
 .navbar-brand {
-  margin-right: 200px; /* Adjust the margin as needed */
+  margin-right: 300px; /* Adjust the margin as needed */
 }
 
 .borough-dropdown {
-  margin-right: 90px; /* Adjust the margin as needed */
+  margin-right: 100px; /* Adjust the margin as needed */
 }
 
 .button-group {
