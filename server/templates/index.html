@@ -2,86 +2,43 @@
 <html lang="en">
 <head>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NYC Crime Dashboard</title>
- 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
-
-    <style>
-        /* Add a gradient red background to the navbar */
-        .custom-navbar {
-            background: linear-gradient(to right, #541001, #a01705, #ce0808, #de2c14, #c55941);
-        }
-        
-    
-        /* Style for the borough dropdown */
-        .borough-dropdown {
-            margin-right: 20px;
-        }
-
-        /* Style for the radio buttons */
-        .custom-radio {
-            margin-right: 10px;
-        }
-    </style>
-
-    <style>
-        /* Add a gray background to the entire webpage */
-        body {
-            background-color: #656060;
-            background: linear-gradient(32deg, red, black 110%);
-            background-attachment: fixed;
-        }
-        
-        /* Add your additional CSS styles here */
-    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg custom-navbar navbar-light">
-        <!-- Logo (replace 'your-logo.png' with your logo image URL) -->
         <a class="navbar-brand" href="#">
-            NYC 
-            <img src="static/images/crimeLogo.png" alt="Your Logo" width="80" height="50"  style="margin: 0 20px;">
+            NYC
+            <img src="static/images/crimeLogo.png" alt="Your Logo" width="80" height="50" style="margin: 0 20px;">
             DASHBOARD
-            
         </a>
-        <!-- Dropdown menu for selecting boroughs -->
-        <!-- Dropdown menu for selecting boroughs -->
-<select class="form-control borough-dropdown" style="max-width: 140px;">
-    <option value="SELECT A BOROUGH" data-lat="40.7128" data-lon="-74.0060">SELECT </option>
-    <option value="BRONX" data-lat="40.8448" data-lon="-73.8648">BRONX</option>
-    <option value="BROOKLYN" data-lat="40.6782" data-lon="-73.9442">BROOKLYN</option>
-    <option value="QUEENS" data-lat="40.7282" data-lon="-73.7949">QUEENS</option>
-    <option value="MANHATTAN" data-lat="40.7831" data-lon="-73.9712">MANHATTAN</option>
-    <option value="STATEN ISLAND" data-lat="40.5795" data-lon="-74.1502">STATEN ISLAND</option>
-  
-</select>
-    
-      <!-- Button group for filtering crime data -->
-      <div class="container">
-        <div class="btn-group" role="group" aria-label="Crime Type">
-            <a class="btn btn-secondary" href="#crimeBarGraph">Felonies</a>
-            <a class="btn btn-secondary" href="#crimeBarGraph">Misdemeanors</a>
-            <a class="btn btn-secondary" href="#crimeBarGraph">Violations</a>
-         
-            <a class="btn btn-secondary" href="#crimeBarGraph">All Crimes</a>
+        <select class="form-control borough-dropdown" style="max-width: 140px;">
+            <option value="SELECT A BOROUGH" data-lat="40.7128" data-lon="-74.0060">SELECT</option>
+            <option value="BRONX" data-lat="40.8448" data-lon="-73.8648">BRONX</option>
+            <option value="BROOKLYN" data-lat="40.6782" data-lon="-73.9442">BROOKLYN</option>
+            <option value="QUEENS" data-lat="40.7282" data-lon="-73.7949">QUEENS</option>
+            <option value="MANHATTAN" data-lat="40.7831" data-lon="-73.9712">MANHATTAN</option>
+            <option value="STATEN ISLAND" data-lat="40.5795" data-lon="-74.1502">STATEN ISLAND</option>
+        </select>
+        <div class="container">
+            <div class="btn-group" role="group" aria-label="Crime Type">
+                <a class="btn btn-secondary" href="#felony-bar-chart">Felonies</a>
+                <a class="btn btn-secondary" href="#misdemeanor-bar-chart">Misdemeanors</a>
+                <a class="btn btn-secondary" href="#violations-bar-chart">Violations</a>
+                <a class="btn btn-secondary" href="#line-graph">All Crimes</a>
+            </div>
+            <div class="btn-group" role="group" aria-label="Raw Data Group">
+                <a href="http://127.0.0.1:5000/api/v1.0/NYC_all_crime" class="btn btn-secondary">Raw Data</a>
+            </div>
         </div>
-    
-        <div class="btn-group" role="group" aria-label="Raw Data Group">
-            <a href="http://127.0.0.1:5000/api/v1.0/NYC_all_crime" class="btn btn-secondary">Raw Data</a>
-        </div>
-    </div>
-    
-    
-<div>
-  
     </nav>
     <div class="container">
         <div class="row">
@@ -95,12 +52,10 @@
             <div class="col-md-12 mt-3 mb-3">
                 <div id="felony-bar-chart" style="height: 500px;"></div>
             </div>
-    
             <!-- Misdemeanor Bar Graph -->
             <div class="col-md-12 mt-3 mb-3">
                 <div id="misdemeanor-bar-chart" style="height: 500px;"></div>
             </div>
-    
             <!-- Violations Bar Graph -->
             <div class="col-md-12 mt-3 mb-3">
                 <div id="violations-bar-chart" style="height: 500px;"></div>
@@ -111,24 +66,7 @@
             </div>
         </div>
     </div>
-    
-    
-    
-
     <!-- Include your custom JavaScript file -->
     <script src="static/js/logic.js"></script>
-
-    <!-- Include D3.js from a CDN -->
-    <script src="https://d3js.org/d3.v6.min.js"></script>
-
-
-    <!-- Include Bootstrap JavaScript libraries -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- Include Plotly -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
 </body>
 </html>
