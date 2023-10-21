@@ -61,6 +61,103 @@ def get_nyc_crime_data():
     return jsonify(data)
 
 
+@app.route('/api/v1.0/FELONY_summary')
+def felony_summary():
+    try:
+        # Connect to the SQLite database
+        conn = sqlite3.connect('NYC_Crime.db')
+        cursor = conn.cursor()
+
+        # Define a query to fetch FELONY data grouped by borough
+        query = 'SELECT Borough, COUNT(*) as FelonyCount FROM NYC_Crimes WHERE "Law Cat" = "FELONY" GROUP BY Borough'
+
+        # Execute the query
+        cursor.execute(query)
+
+        # Fetch the column names from the cursor.description
+        columns = [column[0] for column in cursor.description]
+
+        # Fetch all records that match the query and create a list of dictionaries
+        felony_data = [dict(zip(columns, row)) for row in cursor.fetchall()]
+        conn.close()
+
+        # Create a dictionary with the FELONY summaries
+        summary = {
+            'FELONY Data': felony_data
+        }
+
+
+        # Return the summary as JSON
+        return jsonify(summary)
+
+    except Exception as e:
+        return jsonify({'error': str(e)})
+
+
+@app.route('/api/v1.0/MISDEMEANOR_summary')
+def misdemeanor_summary():
+    try:
+        # Connect to the SQLite database
+        conn = sqlite3.connect('NYC_Crime.db')
+        cursor = conn.cursor()
+
+        # Define a query to fetch MISDEMEANOR data grouped by borough
+        query = 'SELECT Borough, COUNT(*) as MisdemeanorCount FROM NYC_Crimes WHERE "Law Cat" = "MISDEMEANOR" GROUP BY Borough'
+
+        # Execute the query
+        cursor.execute(query)
+
+        # Fetch the column names from the cursor.description
+        columns = [column[0] for column in cursor.description]
+
+        # Fetch all records that match the query and create a list of dictionaries
+        misdemeanor_data = [dict(zip(columns, row)) for row in cursor.fetchall()]
+        conn.close()
+
+        # Create a dictionary with the MISDEMEANOR summaries
+        summary = {
+            'MISDEMEANOR Data': misdemeanor_data
+        }
+
+  # Return the summary as JSON
+        return jsonify(summary)
+
+    except Exception as e:
+        return jsonify({'error': str(e)})
+
+
+@app.route('/api/v1.0/VIOLATION_summary')
+def violation_summary():
+    try:
+        # Connect to the SQLite database
+        conn = sqlite3.connect('NYC_Crime.db')
+        cursor = conn.cursor()
+
+        # Define a query to fetch VIOLATION data grouped by borough
+        query = 'SELECT Borough, COUNT(*) as ViolationCount FROM NYC_Crimes WHERE "Law Cat" = "VIOLATION" GROUP BY Borough'
+
+        # Execute the query
+        cursor.execute(query)
+
+        # Fetch the column names from the cursor.description
+        columns = [column[0] for column in cursor.description]
+
+        # Fetch all records that match the query and create a list of dictionaries
+        violation_data = [dict(zip(columns, row)) for row in cursor.fetchall()]
+        conn.close()
+
+        # Create a dictionary with the VIOLATION summaries
+        summary = {
+            'VIOLATION Data': violation_data
+        }
+
+  # Return the summary as JSON
+        return jsonify(summary)
+
+    except Exception as e:
+        return jsonify({'error': str(e)})
+
+
 @app.route('/api/v1.0/NYC_borough_summary/<borough>')
 def borough_summary(borough):
     try:
@@ -105,5 +202,9 @@ def borough_summary(borough):
     except sqlite3.Error as e:
         return jsonify({'error': 'Database error: ' + str(e)})
 
+
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
+
+
+

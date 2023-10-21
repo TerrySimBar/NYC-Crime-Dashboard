@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NYC Crime Dashboard</title>
  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
@@ -46,7 +48,7 @@
         <!-- Logo (replace 'your-logo.png' with your logo image URL) -->
         <a class="navbar-brand" href="#">
             NYC 
-            <img src="../static/images/crimeLogo.png" alt="Your Logo" width="80" height="50"  style="margin: 0 20px;">
+            <img src="static/images/crimeLogo.png" alt="Your Logo" width="80" height="50"  style="margin: 0 20px;">
             DASHBOARD
             
         </a>
@@ -82,25 +84,36 @@
   
     </nav>
     <div class="container">
-        <br>
-        <!-- Add your map div here -->
-        <div id="map" style="width: 1100px; height: 500px;"></div>
-
+        <div class="row">
+            <!-- Map Container -->
+            <div class="col-md-12 mt-3 mb-3">
+                <div id="map" style="height: 500px;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Felony Bar Graph -->
+            <div class="col-md-4 mt-3 mb-3">
+                <div id="felony-bar-chart" style="height: 500px;"></div>
+            </div>
+    
+            <!-- Misdemeanor Bar Graph -->
+            <div class="col-md-4 mt-3 mb-3">
+                <div id="misdemeanor-bar-chart" style="height: 500px;"></div>
+            </div>
+    
+            <!-- Violations Bar Graph -->
+            <div class="col-md-4 mt-3 mb-3">
+                <div id="violations-bar-chart" style="height: 500px;"></div>
+            </div>
+            <!-- Line Graph Container -->
+            <div class="col-md-12 mt-3 mb-3">
+                <div id="line-graph" style="height: 500px;"></div>
+            </div>
+        </div>
     </div>
-
-    <div class="container">
-        <br>
-        <!-- Add your bar graph div here -->
-        <div id="crimeBarGraph" style="display: none;">
-            <!-- Your bar graph content will go here -->
-          </div>
-
-          <div class="container">
-            <br>
-            <!-- Add your line graph div here -->
-            <div id="crimeLineGraph" style="display: none;">
-                <!-- Your bar graph content will go here -->
-              </div>
+    
+    
+    
 
     <!-- Include your custom JavaScript file -->
     <script src="static/js/logic.js"></script>
@@ -113,5 +126,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Include Plotly -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
 </body>
 </html>
