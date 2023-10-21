@@ -5,22 +5,30 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NYC Crime Dashboard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <style>
+        body {
+            background-image: url('static/images/crimeLogo.png');
+            background-size: cover; 
+            background-repeat: no-repeat; 
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg custom-navbar navbar-light">
         <a class="navbar-brand" href="#">
-            NYC
-            <img src="static/images/crimeLogo.png" alt="Your Logo" width="80" height="50" style="margin: 0 20px;">
-            DASHBOARD
+            
+            NYC CRIME DASHBOARD
         </a>
-        <select class="form-control borough-dropdown" style="max-width: 140px;">
+        <select class="form-control borough-dropdown" style="max-width: 400px;">
             <option value="SELECT A BOROUGH" data-lat="40.7128" data-lon="-74.0060">SELECT</option>
             <option value="BRONX" data-lat="40.8448" data-lon="-73.8648">BRONX</option>
             <option value="BROOKLYN" data-lat="40.6782" data-lon="-73.9442">BROOKLYN</option>
@@ -28,6 +36,7 @@
             <option value="MANHATTAN" data-lat="40.7831" data-lon="-73.9712">MANHATTAN</option>
             <option value="STATEN ISLAND" data-lat="40.5795" data-lon="-74.1502">STATEN ISLAND</option>
         </select>
+        
         <div class="container">
             <div class="btn-group" role="group" aria-label="Crime Type">
                 <a class="btn btn-secondary" href="#felony-bar-chart">Felonies</a>
@@ -66,6 +75,9 @@
             </div>
         </div>
     </div>
+   
+
+
     <!-- Include your custom JavaScript file -->
     <script src="static/js/logic.js"></script>
 </body>

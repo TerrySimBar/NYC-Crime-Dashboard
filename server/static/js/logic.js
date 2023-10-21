@@ -104,7 +104,7 @@ fetch('http://127.0.0.1:5000/api/v1.0/FELONY_summary')
         const boroughs = felonyData["FELONY Data"].map(item => item.Borough);
         const felonyCounts = felonyData["FELONY Data"].map(item => item.FelonyCount);
         
-        createBarChart("Felony Crimes", "felony-bar-chart", boroughs, felonyCounts, "Borough", "Felony Count");
+        createBarChart("Felony Crimes", "felony-bar-chart", boroughs, felonyCounts, " ", " ");
     })
     .catch(error => {
         console.error('Error:', error);
@@ -117,7 +117,7 @@ fetch('http://127.0.0.1:5000/api/v1.0/MISDEMEANOR_summary')
         const boroughs = misdemeanorData["MISDEMEANOR Data"].map(item => item.Borough);
         const misdemeanorCounts = misdemeanorData["MISDEMEANOR Data"].map(item => item.MisdemeanorCount);
 
-        createBarChart("Misdemeanor Crimes", "misdemeanor-bar-chart", boroughs, misdemeanorCounts, "Borough", "Misdemeanor Count");
+        createBarChart("Misdemeanor Crimes", "misdemeanor-bar-chart", boroughs, misdemeanorCounts, " ", " ");
     })
     .catch(error => {
         console.error('Error:', error);
@@ -130,7 +130,7 @@ fetch('http://127.0.0.1:5000/api/v1.0/VIOLATION_summary')
         const boroughs = violationData["VIOLATION Data"].map(item => item.Borough);
         const violationCounts = violationData["VIOLATION Data"].map(item => item.ViolationCount);
 
-        createBarChart("Violations", "violations-bar-chart", boroughs, violationCounts, "Borough", "Violation Count");
+        createBarChart("Violations", "violations-bar-chart", boroughs, violationCounts, " ", " ");
     })
     .catch(error => {
         console.error('Error:', error);
@@ -143,7 +143,7 @@ fetch('http://127.0.0.1:5000/api/v1.0/NYC_all_crime')
         const groupedData = groupDataByMonth(data);
         const labels = Object.keys(groupedData);
         const counts = Object.values(groupedData);
-        createLineGraph("Crime Trend", "line-graph", labels, counts, "Month-Year", "Crime Count");
+        createLineGraph("Crime Trend", "line-graph", labels, counts, " ", " ");
     })
     .catch(error => {
         console.error('Error:', error);

@@ -1,7 +1,15 @@
 .navbar-brand {
-  color: white !important; /* Change the text color to white */
-  font-size: 30px !important;
+  color: rgb(192, 149, 149) !important; /* Change the text color to red */
+  font-size: 40px !important;
+  padding: 10px 20px; /* Add padding for better visibility */
+  text-shadow: none; /* Remove text shadow if not needed */
 }
+
+/* Add a red background to the navbar */
+.custom-navbar {
+  background: linear-gradient(to right, #280223, #40054f, #430146, #70067e, #a941c5);
+}
+
 
 .navbar {
   display: flex;
@@ -11,15 +19,16 @@
 
 /* Add space between the logo and dropdown in the navbar */
 .navbar-brand {
-  margin-right: 300px; /* Adjust the margin as needed */
+  margin-right: 110px; /* Adjust the margin as needed */
 }
 
 .borough-dropdown {
-  margin-right: 100px; /* Adjust the margin as needed */
+  margin-right: 80px; /* Adjust the margin as needed */
+  width: 400px !important;
 }
 
 .button-group {
-  margin-left: 85px; /* Adjust the margin as needed */
+  margin-left: 150px;/* Adjust the margin as needed */
 }
 /* Define styles for the custom marker and text box */
 .custom-marker {
@@ -32,5 +41,12 @@
 .marker-text {
   padding: 5px;
   font-weight: bold;
+}
+
+.body {
+  background-image: url('../images/crimeLogo.png'); 
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-attachment: fixed; 
 }
 
