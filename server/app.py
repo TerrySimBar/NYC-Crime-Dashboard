@@ -1,32 +1,20 @@
+# Import dependencies   
 from flask import Flask, jsonify, render_template
 import sqlite3
-from flask_cors import CORS
-
-
-app = Flask(__name__)
-CORS(app)  # Enable CORS for your Flask app
-
-# Define your routes and other configurations below
 
 app = Flask(__name__)
 
-# Start at the home page, list all routes that are available.   
+
+# Define the home route and return the index.html template to use flask server  
 @app.route("/")
 def home():
     return render_template("index.html")
-    # return (
-    #     f"Welcome to the NYC Crime 2022 API!<br/>"
-    #     f"/api/v1.0/NYC_all_crime<br/>"
-    #     f"/api/v1.0/NYC_borough_summary/BRONX<br/>"
-    #     f"/api/v1.0/NYC_borough_summary/BROOKLYN<br/>"
-    #     f"/api/v1.0/NYC_borough_summary/QUEENS<br/>"
-    #     f"/api/v1.0/NYC_borough_summary/STATEN ISLAND<br/>"
-    #     f"/api/v1.0/NYC_borough_summary/MANHATTAN<br/>"
-    # )
 
-# Define a route to retrieve and return the data as JSON
+
+# Define a route to retrieve and return the complete data as JSON
 @app.route('/api/v1.0/NYC_all_crime', methods=['GET'])
 def get_nyc_crime_data():
+    
     # Create a database connection
     conn = sqlite3.connect('NYC_Crime.db')
     
@@ -52,7 +40,6 @@ def get_nyc_crime_data():
             'Longitude': row[6]
         })
 
-
     # Close the cursor and the connection
     cursor.close()
     conn.close()
@@ -61,6 +48,7 @@ def get_nyc_crime_data():
     return jsonify(data)
 
 
+# Define a route to retrieve the FELONY summary for the Plotly.js chart 
 @app.route('/api/v1.0/FELONY_summary')
 def felony_summary():
     try:
@@ -94,6 +82,7 @@ def felony_summary():
         return jsonify({'error': str(e)})
 
 
+# Define a route to retrieve the MISDEMEANOR summary for the Plotly.js chart 
 @app.route('/api/v1.0/MISDEMEANOR_summary')
 def misdemeanor_summary():
     try:
@@ -126,6 +115,7 @@ def misdemeanor_summary():
         return jsonify({'error': str(e)})
 
 
+# Define a route to retrieve the VIOLATION summary for the Plotly.js chart 
 @app.route('/api/v1.0/VIOLATION_summary')
 def violation_summary():
     try:
@@ -158,6 +148,7 @@ def violation_summary():
         return jsonify({'error': str(e)})
 
 
+# Define a route to retrieve the borough summary for the leaflet map markers
 @app.route('/api/v1.0/NYC_borough_summary/<borough>')
 def borough_summary(borough):
     try:
@@ -205,6 +196,3 @@ def borough_summary(borough):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-

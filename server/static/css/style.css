@@ -1,20 +1,21 @@
+/* Customise the navbar-brand */
 .navbar-brand {
-  color: rgb(192, 149, 149) !important; /* Change the text color to red */
+  color: rgb(192, 149, 149) !important; 
   font-size: 40px !important;
-  padding: 10px 20px; /* Add padding for better visibility */
-  text-shadow: none; /* Remove text shadow if not needed */
+  padding: 10px 20px; 
+  text-shadow: none; 
 }
 
-/* Add a red background to the navbar */
+/* Give the navbar a gradient background */ 
 .custom-navbar {
   background: linear-gradient(to right, #280223, #40054f, #430146, #70067e, #a941c5);
 }
 
-
+/* Format the navbar alignment */
 .navbar {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center; 
+  align-items: center; 
 }
 
 /* Add space between the logo and dropdown in the navbar */
@@ -22,27 +23,32 @@
   margin-right: 110px; /* Adjust the margin as needed */
 }
 
+/* Add space between the dropdown and the button group in the navbar */
 .borough-dropdown {
-  margin-right: 80px; /* Adjust the margin as needed */
-  width: 400px !important;
+  margin-right: 90px; /* Adjust the margin as needed */
+  width: 300px !important;
 }
 
+/* Format button-group spacing in the navbar */
 .button-group {
   margin-left: 150px;/* Adjust the margin as needed */
 }
-/* Define styles for the custom marker and text box */
+
+/* Define styles for the custom marker with text box */
 .custom-marker {
   text-align: center;
-  background-color: #7f1313; /* Background color for the text box */
+  background-color: #4e0843; /* Background color for the text box */
   color: white; /* Text color */
   border: 1px solid #0d0e0f;
 }
 
+/* Define styles for the custom marker text */
 .marker-text {
   padding: 5px;
   font-weight: bold;
 }
 
+/* Define styles for the body */
 .body {
   background-image: url('../images/crimeLogo.png'); 
   background-size: cover; 

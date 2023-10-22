@@ -1,4 +1,7 @@
+// Ensure DOM is loaded before all webpage executions
 document.addEventListener("DOMContentLoaded", function () {
+
+
     // Initialize the Leaflet map
     var map = L.map('map').setView([40.7128, -74.0060], 10);
     
@@ -7,8 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
-    
-    var markers = L.layerGroup(); // Create a layer group for markers
+
+    // Create a layer group for markers
+    var markers = L.layerGroup(); 
     
     // Function to create markers with custom data
     function addMarker(lat, lon, selectedBorough) {
@@ -70,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
     
+
     // Hard-coded geocoordinates for boroughs
     var boroughCoordinates = {
         'BRONX': { lat: 40.8448, lon: -73.8648 },
@@ -80,7 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 });
 
-// Function to create a bar chart
+
+// Function to create Plotly bar chart
 function createBarChart(title, elementId, xData, yData, xTitle, yTitle) {
     const trace = {
         x: xData,
@@ -97,7 +103,7 @@ function createBarChart(title, elementId, xData, yData, xTitle, yTitle) {
     Plotly.newPlot(elementId, [trace], layout);
 }
 
-// Fetch felony summary data and create the bar chart
+// Fetch felony summary data for bar chart
 fetch('http://127.0.0.1:5000/api/v1.0/FELONY_summary')
     .then(response => response.json())
     .then(felonyData => {
@@ -110,7 +116,7 @@ fetch('http://127.0.0.1:5000/api/v1.0/FELONY_summary')
         console.error('Error:', error);
     });
 
-// Fetch misdemeanor summary data and create the bar chart
+// Fetch misdemeanor summary for bar chart
 fetch('http://127.0.0.1:5000/api/v1.0/MISDEMEANOR_summary')
     .then(response => response.json())
     .then(misdemeanorData => {
@@ -123,7 +129,7 @@ fetch('http://127.0.0.1:5000/api/v1.0/MISDEMEANOR_summary')
         console.error('Error:', error);
     });
 
-// Fetch violations summary data and create the bar chart
+// Fetch violations summary for bar chart
 fetch('http://127.0.0.1:5000/api/v1.0/VIOLATION_summary')
     .then(response => response.json())
     .then(violationData => {
@@ -136,20 +142,20 @@ fetch('http://127.0.0.1:5000/api/v1.0/VIOLATION_summary')
         console.error('Error:', error);
     });
 
-// Fetch all crime data and create a line graph
+// Fetch all crime data for line graph
 fetch('http://127.0.0.1:5000/api/v1.0/NYC_all_crime')
     .then(response => response.json())
     .then(data => {
         const groupedData = groupDataByMonth(data);
         const labels = Object.keys(groupedData);
         const counts = Object.values(groupedData);
-        createLineGraph("Crime Trend", "line-graph", labels, counts, " ", " ");
+        createLineGraph("All Crimes", "line-graph", labels, counts, " ", " ");
     })
     .catch(error => {
         console.error('Error:', error);
     });
 
-// Function to group data by month
+// Function to group all crime data by month
 function groupDataByMonth(data) {
     return data.reduce((result, record) => {
         const complaintDate = new Date(record['Complaint Date']);
