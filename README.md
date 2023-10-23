@@ -44,7 +44,7 @@ Additionally, users may click the `Raw Data` button in the navbar to view the ra
 
 ---
 
-##### The "Violations" button is clicked and the page scrolls to the plotly bar graph
+##### The "Violations" button is clicked and the page scrolls to the Plotly bar graph
 <img src="server/static/images/cat_bar.png" width="1600"> 
 <br>
 <br>
@@ -146,7 +146,7 @@ The HTML file (`index.html`) in this project is structured as follows:
      - Bar Chart
      - Line Chart
 
-6. **JavaScript File:s** JavaScript files are included at the end of the `<body>` to handle interactivity and data visualization. The other necessary libraries are tagged in the `<head>` section to ensure that they are loaded first to avoid issues with the JavaScript code and the performance of the dashboard.
+6. **JavaScript File:** JavaScript file `logic.js` is included at the end of the `<body>` to handle interactivity and data visualization. The other necessary libraries are tagged in the `<head>` section to ensure that they are loaded first to avoid issues with the JavaScript code and the performance of the dashboard.
 
 <br>
 
