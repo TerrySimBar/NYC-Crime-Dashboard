@@ -1,7 +1,7 @@
 # NYC-Crime-Dashboard
 <br>
 
-A project that uses Python (Pandas, Flask , SQLite3), JavaScript, HTML, CSS, Bootstrap, Leaflet, Plotly to build an interactive dashboard for visualizing a dataset of over half a million crimes that occured in New York City in 2022. The dataset was sourced through https://opendata.cityofnewyork.us/
+A project that uses Python (Pandas, Flask , SQLite3), JavaScript, HTML, CSS, Bootstrap, Leaflet, Plotly to build an interactive dashboard for visualizing a dataset of over half a million crimes that occurred in New York City in 2022. The dataset was sourced through https://opendata.cityofnewyork.us/
 <br>
 
 <img src="server/static/images/home.png" width="1600">   
@@ -21,7 +21,7 @@ A project that uses Python (Pandas, Flask , SQLite3), JavaScript, HTML, CSS, Boo
 ### Introduction
 This JavaScript project fetches JSON crime data from flask powered URLs to create an interactive dashboard on a webpage. The dashboard allows users to select a NYC borough from a dropdown menu in a Bootstrap navbar to initiate interactivity on a leaflet map and get the crime summary for the selected borough. When a borough is selected from the dropdown, the map zooms to the location, a marker pops up with a `CLICK HERE` message, and when the marker is clicked, the crime summary for the borough is displayed. 
 
-Users may also select a law category such as `Felonies` or `Violations` from a button-group in the navbar and the webpage will scroll to the interactive Plotly bar graph that visualizes the summary grouped by borough. The `All Crimes` button in the button-group displays the summary for all crimes in NYC for the selected year as an interactive Plotly line graph. 
+Users may also select a law category such as `Felonies` or `Violations` from a button-group in the navbar and the webpage will scroll to the interactive Plotly bar graph that visualizes the selection. The `All Crimes` button in the button-group displays the interactive Plotly line graph for all crimes in NYC for the selected year. 
 
 Additionally, users may click the `Raw Data` button in the navbar to view the raw data as a JSON file in a new tab. See images below:
 <br>
@@ -73,7 +73,7 @@ Additionally, users may click the `Raw Data` button in the navbar to view the ra
 <br>
 
 ### Features
-- Use Pyhton and Pandas to clean and format a CSV dataset to load a database. 
+- Use Python and Pandas to clean and format a CSV dataset to load a database. 
 
 - Use Sqlite3 to create and load a database from a Pandas dataframe.    
 
@@ -84,7 +84,7 @@ Additionally, users may click the `Raw Data` button in the navbar to view the ra
 <br>
 
 ### Requirements & Dependencies
-All the necessary JavaScript libraries, including Bootstrap, Leaflet and Plotly.js, are included directly in the accompanying HTML file using `<script>` tags. These libraries are either hosted via Content Delivery Networks (CDNs) or included locally. you will also need to install the following dependencies:   
+All the necessary JavaScript libraries, including Bootstrap, Leaflet and Plotly.js, are included directly in the accompanying HTML file using `<script>` tags. These libraries are either hosted via Content Delivery Networks (CDNs) or included locally. You will also need to install the following dependencies:   
 
 Python (version 3.10.9)
 Pandas (version: 2.0.3)
@@ -102,7 +102,7 @@ The ETL process for this project is performed in a Jupyter Notebook (`etl.ipynb`
 
 1. **Set Up Dependencies:** Import the necessary Python software.
 
-2. **Read the CSV File:** Read the CSV file into a Pandas dataframe using `pd.read_csv`. The dataset is downloaded from the source and contains over half a million rows.   
+2. **Read the CSV File:** Read the CSV file into a Pandas DataFrame using `pd.read_csv`. The dataset is downloaded from the source and contains over half a million rows.   
 
 3. **Clean the Data:** The dataset is cleaned and formatted using Pandas. The following steps are included:
    - Drop unnecessary columns
@@ -110,18 +110,18 @@ The ETL process for this project is performed in a Jupyter Notebook (`etl.ipynb`
    - Rename columns
    - Convert data types
 
-4. **Create the Database:** The `NYC_Crime.db` database is created using `sqlite3.connect`, and the cleaned dataframe is loaded into database under the `NYC_crimes` table using `df.to_sql`. 
+4. **Create the Database:** The `NYC_Crime.db` database is created using `sqlite3.connect`, and the cleaned DataFrame is loaded into the database under the `NYC_crimes` table using `df.to_sql`. 
  
 <br>
 
 #### Flask API  
-The Flask API is created in a Python file (`app.py`) using Flask. Here are the key steps in the API creation process:   
+The Flask API is created in a Python file (`app.py`). Here are the key steps in the API creation process:   
 
 1. **Set Up Dependencies:** Import SQLIte3, Flask, jsonify, render_template. 
 
 2. **Create the Flask App:** Create a Flask app instance using `Flask(__name__)`.   
 
-3. **Define the Home Route:** Use `render_template` to ensure that the home route renders the `index.html` template. This is important to run the dashboard on the local server. You will need to ensure that the `index.html` file in the `templates` folder, and you will have to restructure the project folder and necessary scripts if you wish to deploy the dashboard on a web server.   
+3. **Define the Home Route:** Use `render_template` to ensure that the home route renders the `index.html` template. This is important to run the dashboard on the local server. You will need to ensure that the `index.html` file is in the `templates` folder, and you will have to restructure the project folder and necessary scripts if you wish to deploy the dashboard on a web server.   
 
 4. **Define all the other necessary Routes:** Build the routes needed for the dashboard: borough summary, category summary, and the raw data.  
 
