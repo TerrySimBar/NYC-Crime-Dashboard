@@ -4,7 +4,7 @@
 A project that uses Python (Pandas, Flask , SQLite3), JavaScript, HTML, CSS, Bootstrap, Leaflet, Plotly to build an interactive dashboard for visualizing a dataset of over half a million crimes that occurred in New York City in 2022. The dataset was sourced through https://opendata.cityofnewyork.us/
 <br>
 
-<img src="server/static/images/home.png" width="1600">   
+<img src="static/images/home.png" width="1600">   
 <br>
 <br>
 
@@ -27,7 +27,7 @@ Additionally, users may click the `Raw Data` button in the navbar to view the ra
 <br>
 
 ##### A borough is selected from the dropdown menu and the map zooms to the location
-<img src="server/static/images/boro_zoom.png" width="1600">   
+<img src="static/images/boro_zoom.png" width="1600">   
 <br>
 <br>
 <br>
@@ -36,7 +36,7 @@ Additionally, users may click the `Raw Data` button in the navbar to view the ra
 ---
 
 ##### The marker is clicked and the crime summary for the borough is displayed  
-<img src="server/static/images/boro_summ.png" width="1600">   
+<img src="static/images/boro_summ.png" width="1600">   
 <br>
 <br>
 <br>
@@ -45,7 +45,7 @@ Additionally, users may click the `Raw Data` button in the navbar to view the ra
 ---
 
 ##### The "Violations" button is clicked and the page scrolls to the Plotly bar graph
-<img src="server/static/images/cat_bar.png" width="1600"> 
+<img src="static/images/cat_bar.png" width="1600"> 
 <br>
 <br>
 <br>
@@ -54,7 +54,7 @@ Additionally, users may click the `Raw Data` button in the navbar to view the ra
 ---
 
 ##### The "All Crimes" button is clicked and the page scrolls to the Plotly line graph  
-<img src="server/static/images/all_line.png" width="1600">    
+<img src="static/images/all_line.png" width="1600">    
 <br>
 <br>
 <br>
@@ -63,7 +63,7 @@ Additionally, users may click the `Raw Data` button in the navbar to view the ra
 ---
 
 ##### The "Raw Data" button is clicked and the raw data is displayed in a new tab
-<img src="server/static/images/raw_data.png" width="1600">   
+<img src="static/images/raw_data.png" width="1600">   
 <br>
 <br>
 <br>
