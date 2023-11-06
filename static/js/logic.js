@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         markers.addLayer(marker);
     }
     
-    // Function to fetch crime summary data and show on marker click
+
     function showCrimeSummary(selectedBorough, marker) {
         const crimeSummaryURL = `http://127.0.0.1:5000/api/v1.0/NYC_borough_summary/${selectedBorough}`;
     
@@ -43,15 +43,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 return response.json();
             })
             .then(data => {
-                const formattedData = JSON.stringify(data, null, 2);
-                const popupContent = `<pre>${formattedData}</pre>`;
+                // Extract relevant information from the JSON data
+                const borough = data.Borough;
+                const felonyCount = data['Law Cat Summary'].FELONY;
+                const misdemeanorCount = data['Law Cat Summary'].MISDEMEANOR;
+                const violationCount = data['Law Cat Summary'].VIOLATION;
+                const totalCrimes = data['Total Crimes'];
+    
+                // Format the data presentation in the popup
+                const popupContent = `
+                    <p>BOROUGH: ${borough}</p>
+                    <p>FELONY: ${felonyCount}</p>
+                    <p>MISDEMEANOR: ${misdemeanorCount}</p>
+                    <p>VIOLATION: ${violationCount}</p>
+                    <p>TOTAL CRIMES: ${totalCrimes}</p>
+                `;
+    
                 marker.bindPopup(popupContent).openPopup();
             })
             .catch(error => {
                 console.error('Error fetching data or parsing JSON:', error);
             });
     }
-    
+
+
     // Handle changes in the dropdown selection
     document.querySelector('.borough-dropdown').addEventListener('change', function (event) {
         var selectedBorough = event.target.value;
