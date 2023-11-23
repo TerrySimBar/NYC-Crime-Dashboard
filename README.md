@@ -87,8 +87,11 @@ Additionally, users may click the `Raw Data` button in the navbar to view the ra
 All the necessary JavaScript libraries, including Bootstrap, Leaflet and Plotly.js, are included directly in the accompanying HTML file using `<script>` tags. These libraries are either hosted via Content Delivery Networks (CDNs) or included locally. You will also need to install the following dependencies:   
 
 Python (version 3.10.9)
+
 Pandas (version: 2.0.3)
+
 Flask (version: 2.2.2)
+
 SQLite3 (version: 3.41.2)
 
 <br>
